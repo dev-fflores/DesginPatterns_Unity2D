@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Input;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Ships.CheckLimits;
 
 namespace Ships
 {
@@ -10,6 +10,7 @@ namespace Ships
         [SerializeField] private bool _useAI = false;
         [SerializeField] private Ship _ship;
         [SerializeField] private Joystick _joystick;
+        [SerializeField] private JoyButton _joyButton;
 
         private void Awake()
         {
@@ -26,7 +27,7 @@ namespace Ships
             
             if (_useJoystick)
             {
-                return new UnityJoystickInputAdapter(_joystick);
+                return new UnityJoystickInputAdapter(_joystick, _joyButton);
             }
             
             return new UnityOldInputAdapter();

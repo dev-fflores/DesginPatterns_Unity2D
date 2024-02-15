@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Ships
+namespace Input
 {
     public interface IInput
     {
         Vector2 GetDirection();
+        bool IsFireActionPressed();
     }
 }

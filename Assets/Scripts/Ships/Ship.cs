@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Input;
+using Ships.CheckLimits;
+using Ships.Weapons;
 using UnityEngine;
 
 namespace Ships
@@ -9,11 +11,13 @@ namespace Ships
         [SerializeField] private IInput _input;
         [SerializeField] private ICheckLimits _checkLimits;
         private Transform _transform;
-        private Camera _camera;
+        [SerializeField] private Projectile _bulletPrefab;
+        private float _remainingTimeToShoot;
+        [SerializeField] private float _fireRateInSeconds = 0.5f;
+        [SerializeField] private Transform _projectileSpawnPosition;
 
         private void Awake()
         {
-            _camera = Camera.main;
             _transform = transform;
         }
         
@@ -27,6 +31,7 @@ namespace Ships
         {
             var direction = GetDirection();
             Move(direction);
+            TryShoot();
         }
 
         private void Move(Vector2 direction)
@@ -40,6 +45,27 @@ namespace Ships
         private Vector2 GetDirection()
         {
             return _input.GetDirection();
+        }
+
+        private void TryShoot()
+        {
+            _remainingTimeToShoot -= Time.deltaTime;
+            
+            if (_remainingTimeToShoot > 0)
+            {
+                return;
+            }
+
+            if (_input.IsFireActionPressed())
+            {
+                Shoot();
+            }
+        }
+
+        private void Shoot()
+        {
+            _remainingTimeToShoot = _fireRateInSeconds;
+            Instantiate(_bulletPrefab, _projectileSpawnPosition.position, _projectileSpawnPosition.rotation);
         }
     }
 }

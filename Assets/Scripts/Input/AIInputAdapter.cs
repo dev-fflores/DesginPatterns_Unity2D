@@ -5,18 +5,22 @@ namespace Ships
 {
     public class AIInputAdapter : IInput
     {
-        private readonly Ship _ship;
+        private readonly ShipMediator _shipMediator;
         private int _currentDirectionX;
-        public AIInputAdapter(Ship ship)
+        private Camera _camera;
+
+        public AIInputAdapter(ShipMediator shipMediator)
         {
-            _ship = ship;
+            _shipMediator = shipMediator;
             _currentDirectionX = 1;
+            _camera = Camera.main;
         }
+
         public Vector2 GetDirection()
         {
             // Quiero que la nave se mueva de izquierda a derecha y viceversa
             // cada que llegue a un extremo de la pantalla
-            var viewportPoint = Camera.main.WorldToViewportPoint(_ship.transform.position);
+            var viewportPoint = _camera.WorldToViewportPoint(_shipMediator.transform.position);
             
             
             if (viewportPoint.x < 0.05f)

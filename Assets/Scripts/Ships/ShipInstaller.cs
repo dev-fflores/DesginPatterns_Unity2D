@@ -1,6 +1,7 @@
 ﻿using Input;
 using UnityEngine;
 using Ships.CheckLimits;
+using UnityEngine.Serialization;
 
 namespace Ships
 {
@@ -8,20 +9,20 @@ namespace Ships
     {
         [SerializeField] private bool _useJoystick = false;
         [SerializeField] private bool _useAI = false;
-        [SerializeField] private Ship _ship;
+        [FormerlySerializedAs("_ship")] [SerializeField] private ShipMediator shipMediator;
         [SerializeField] private Joystick _joystick;
         [SerializeField] private JoyButton _joyButton;
 
         private void Awake()
         {
-            _ship.Configure(GetInput(), GetLimits());
+            shipMediator.Configure(GetInput(), GetLimits());
         }
         
         private IInput GetInput()
         {
             if (_useAI)
             {
-                return new AIInputAdapter(_ship);
+                return new AIInputAdapter(shipMediator);
             }
             
             
@@ -38,9 +39,9 @@ namespace Ships
             if (_useAI)
             {
                 // return new LimitOutsideCameraAdapter(_ship.transform, 10f);
-                return new LimitInsideCameraAdapter(_ship, Camera.main);
+                return new LimitInsideCameraAdapter(shipMediator, Camera.main);
             }
-            return new LimitOutsideCameraAdapter(_ship.transform, 10f);
+            return new LimitOutsideCameraAdapter(shipMediator.transform, 10f);
             // return new LimitInsideCameraAdapter(_ship, Camera.main);
         }
     }

@@ -417,9 +417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9555e08e39bf475a8ed0798b7de15232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useJoystick: 1
+  _useJoystick: 0
   _useAI: 0
-  _ship: {fileID: 1641266676}
+  shipMediator: {fileID: 1641266676}
   _joystick: {fileID: 943752298}
   _joyButton: {fileID: 1423455338}
 --- !u!4 &1144035497
@@ -573,12 +573,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
---- !u!4 &1585953039 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8407263298736246145, guid: 13c34ca701e41094faf6272f9dc7fb38,
-    type: 3}
-  m_PrefabInstance: {fileID: 6495590387307151178}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1641266676 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6495590386741920446, guid: 13c34ca701e41094faf6272f9dc7fb38,
@@ -777,16 +771,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6495590386741920446, guid: 13c34ca701e41094faf6272f9dc7fb38,
-        type: 3}
-      propertyPath: _bulletPrefab
-      value: 
-      objectReference: {fileID: 9164465157962555945, guid: dd314339443734e43bc925959fe47b37,
-        type: 3}
-    - target: {fileID: 6495590386741920446, guid: 13c34ca701e41094faf6272f9dc7fb38,
-        type: 3}
-      propertyPath: _projectileSpawnPosition
-      value: 
-      objectReference: {fileID: 1585953039}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c34ca701e41094faf6272f9dc7fb38, type: 3}

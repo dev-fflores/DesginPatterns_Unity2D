@@ -6,25 +6,25 @@ namespace Ships.CheckLimits
     {
         
         private readonly Camera _camera;
-        private readonly Ship _ship;
+        private readonly ShipMediator _shipMediator;
         private readonly float _lowerLimit;
         private readonly float _upperLimit;
 
-        public LimitInsideCameraAdapter(Ship ship, Camera camera)
+        public LimitInsideCameraAdapter(ShipMediator shipMediator, Camera camera)
         {
             _camera = camera;
-            _ship = ship;
+            _shipMediator = shipMediator;
             _lowerLimit = 0.03f;
             _upperLimit = 0.97f;
         }
 
         public void ClampFinalPosition()
         {
-            var viewportPoint = _camera.WorldToViewportPoint(_ship.transform.position);
+            var viewportPoint = _camera.WorldToViewportPoint(_shipMediator.transform.position);
             viewportPoint.x = Mathf.Clamp(viewportPoint.x, _lowerLimit, _upperLimit);
             viewportPoint.y = Mathf.Clamp(viewportPoint.y, _lowerLimit, _upperLimit);
             Debug.Log(_camera.ViewportToWorldPoint(viewportPoint));
-            _ship.transform.position = _camera.ViewportToWorldPoint(viewportPoint);
+            _shipMediator.transform.position = _camera.ViewportToWorldPoint(viewportPoint);
         }
     }
 }

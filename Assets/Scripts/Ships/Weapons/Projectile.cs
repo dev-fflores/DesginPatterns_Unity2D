@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ships.Weapons
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private string _id;
+        [SerializeField] private ProjectileId _id;
         [SerializeField] private float _speed = 5f;
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _timeToLive = 2f;
 
-        public string Id => _id;
+        public string Id => _id.Value;
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();

@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9dd6ccd44b4d7c8b214bd26183f1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Projectile1
+  _id: {fileID: 11400000, guid: 8eb8ef86fe289254e9d73cf59a21bb36, type: 2}
   _speed: 5
   _rigidbody2D: {fileID: 0}
   _timeToLive: 1.5

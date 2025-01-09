@@ -41,7 +41,7 @@ namespace Ships
                 // return new LimitOutsideCameraAdapter(_ship.transform, 10f);
                 return new LimitInsideCameraAdapter(shipMediator, Camera.main);
             }
-            return new LimitOutsideCameraAdapter(shipMediator.transform, 10f);
+            return new LimitOutsideCameraAdapter(shipMediator.transform, 9f);
             // return new LimitInsideCameraAdapter(_ship, Camera.main);
         }
     }

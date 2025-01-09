@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ProjectileConfig
   m_EditorClassIdentifier: 
   _bulletPrefabs:
-  - {fileID: 9164465157962555945, guid: dd314339443734e43bc925959fe47b37, type: 3}
-  - {fileID: 9164465157962555945, guid: 1903eb94bd85b40468acc1026e8f7555, type: 3}
+  - {fileID: -1740128736555694580, guid: dd314339443734e43bc925959fe47b37, type: 3}
+  - {fileID: 6156952519348102491, guid: 1903eb94bd85b40468acc1026e8f7555, type: 3}
